@@ -341,11 +341,13 @@ html {
 .slider-nav__arrow-left {
     cursor: pointer;
     padding-right: 4px;
+    transition: 0.3s;
 }
 
 .slider-nav__arrow-right {
     cursor: pointer;
     padding-left: 4px;
+    transition: 0.3s;
 }
 
 .slider-nav__arrow-left:hover {
@@ -581,4 +583,81 @@ input:focus {
 
 .app-download-icon {
     padding-top: 5px;
+}
+
+/* footer */
+.footer__wrapper {
+    display: flex;
+    justify-content: space-between;
+    background-color: #000000;
+    position: relative;
+    height: 184px;
+}
+
+.footer__logo {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -68%);
+    z-index: 10;
+}
+
+.logo-image {
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.logo-image:hover {
+    transform: scale(1.1);
+}
+
+.nav {
+    display: flex;
+    padding-top: 77px;
+    padding-left: 160px;
+}
+
+.nav-item {
+    color: #ffffff;
+    text-transform: capitalize;
+    font-size: 1.4rem;
+    font-weight: 400;
+    opacity: 0.98;
+    padding-right: 40px;
+    letter-spacing: 0.1px;
+    position: relative;
+}
+
+.nav-item:last-child {
+    text-transform: none;
+}
+
+.nav-item:nth-child(1)::after,
+.nav-item:nth-child(2)::after {
+    content: '|';
+    color: #4e4e4e;
+    position: absolute;
+    font-weight: 400;
+    font-size: 10px;
+    left: 63px;
+    top: 3px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: inherit;
+    transition: 0.5s;
+}
+
+.nav-link:hover {
+    text-shadow: 0px 0px 4px rgba(255, 255, 255, 1);
+}
+
+.copyright {
+    color: #818181;
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 140%;
+    padding-top: 75px;
+    padding-right: 161px;
 }
