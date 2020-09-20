@@ -188,7 +188,7 @@ html {
     padding-top: 30px;
 }
 
-.your-life__button .button {
+.button {
     width: 184px;
     height: 46px;
     cursor: pointer;
@@ -208,7 +208,7 @@ html {
 }
 
 .your-life__social-icons {
-    padding: 183px 0 87px 0;
+    padding: 183px 0 88px 0;
 }
 
 .social-icon-link {
@@ -227,4 +227,52 @@ html {
 
 .social-icon-image:hover {
     transform: scale(1.2);
+}
+
+/* rappresent */
+
+.rappresent__wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.rappresent__content {
+    padding-top: 295px;
+    padding-left: 269px;
+}
+
+.rappresent__title {
+    width: 390px;
+    color: #373737;
+    font-weight: 700;
+    font-size: 2.4rem;
+    letter-spacing: 1px;
+    line-height: 122%;
+    text-transform: uppercase;
+}
+
+.rappresent__description {
+    padding-top: 20px;
+    width: 405px;
+    font-weight: 400;
+    font-size: 1.4rem;
+    color: #4e4e4e;
+    line-height: 138%;
+}
+
+.rappresent__description_bold {
+    font-weight: 500;
+    font-size: 1.4rem;
+    color: #4e4e4e;
+    line-height: 21px;
+}
+
+.rappresent__image {
+    padding-top: 120px;
+    padding-right: 269px;
+    padding-bottom: 54px;
+}
+
+.rappresent__button {
+    padding-top: 29px;
 }
