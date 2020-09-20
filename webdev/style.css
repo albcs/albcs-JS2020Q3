@@ -146,3 +146,85 @@ html {
 .navigation__link:hover::after {
     opacity: 1;
 }
+
+/* your-life */
+
+.your-life__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+        url(./assets/images/promo_background.png);
+    background-position-y: -98px;
+}
+
+.your-life__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #ffffff;
+}
+
+.your-life__title {
+    padding-top: 132px;
+    padding-left: 4px;
+    font-weight: 700;
+    font-size: 6.4rem;
+    line-height: 7.5rem;
+    letter-spacing: 4.5px;
+    text-transform: uppercase;
+}
+
+.your-life__description {
+    width: 504px;
+    padding-top: 20px;
+    font-weight: 400;
+    font-size: 1.8rem;
+    line-height: 140%;
+    text-align: center;
+}
+
+.your-life__button {
+    padding-top: 30px;
+}
+
+.your-life__button .button {
+    width: 184px;
+    height: 46px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 1.4rem;
+    letter-spacing: -0.7px;
+    line-height: 140%;
+    text-transform: uppercase;
+    background-color: #00afdb;
+    color: #ffffff;
+    border: none;
+    transition: 0.5s;
+}
+
+.button:hover {
+    background-color: #009cc2;
+}
+
+.your-life__social-icons {
+    padding: 183px 0 87px 0;
+}
+
+.social-icon-link {
+    cursor: pointer;
+    text-decoration: none;
+    padding-right: 28px;
+}
+
+.social-icon-link:last-child {
+    padding-right: 0;
+}
+
+.social-icon-image {
+    transition: 0.5s;
+}
+
+.social-icon-image:hover {
+    transform: scale(1.2);
+}
