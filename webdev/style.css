@@ -368,3 +368,55 @@ html {
 .slider-img__item {
     padding-right: 30px;
 }
+
+/* implement */
+
+.implement__wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.implement__content {
+    padding-top: 319px;
+    padding-right: 380px;
+}
+
+.implement__title {
+    width: 390px;
+    color: #373737;
+    font-weight: 700;
+    font-size: 24px;
+    letter-spacing: 1px;
+    line-height: 2.8rem;
+    text-transform: uppercase;
+}
+
+.implement__description {
+    padding-top: 21px;
+    width: 405px;
+    font-weight: 400;
+    font-size: 1.4rem;
+    color: #4e4e4e;
+    line-height: 140%;
+}
+
+.implement__description_bold {
+    font-weight: 500;
+    font-size: 1.4rem;
+    color: #4e4e4e;
+    line-height: 21px;
+}
+
+.implement__image {
+    padding-top: 120px;
+    padding-left: 269px;
+    padding-bottom: 138px;
+}
+
+.implement__button {
+    padding-top: 30px;
+}
+
+.implement__button .button {
+    width: 180px;
+}
