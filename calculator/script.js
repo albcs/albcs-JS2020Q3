@@ -2,6 +2,7 @@ class Calculator {
     constructor(previousOperandTextElement, currentOperandTextElement) {
         this.previousOperandTextElement = previousOperandTextElement;
         this.currentOperandTextElement = currentOperandTextElement;
+        this.readyToReset = false;
         this.clear();
     }
 
@@ -30,6 +31,7 @@ class Calculator {
         if (this.previousOperand != '') {
             this.compute();
         }
+        this.readyToReset = true;
         this.operation = operation;
         this.previousOperand = this.currentOperand;
         this.currentOperand = '';
@@ -113,6 +115,13 @@ const calculator = new Calculator(
 
 numberButtons.forEach((button) => {
     button.addEventListener('click', () => {
+        if (
+            calculator.previousOperand === '' &&
+            calculator.currentOperand != '' &&
+            calculator.readyToReset === true
+        ) {
+            calculator.currentOperand = '';
+        }
         calculator.appendNumber(button.innerText);
         calculator.updateDisplay();
     });
