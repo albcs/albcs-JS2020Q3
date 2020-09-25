@@ -26,7 +26,9 @@ class Calculator {
     }
 
     chooseOperation(operation) {
-        if (operation === '-' && !this.currentOperand.includes('-')) {
+        if (this.currentOperand === '-') {
+            this.currentOperand = '';
+        } else if (operation === '-' && this.currentOperand === '') {
             this.currentOperand = '-';
             return;
         }
@@ -54,11 +56,12 @@ class Calculator {
 
     compute() {
         let computation;
-        const prev = parseFloat(this.previousOperand);
-        const current = parseFloat(this.currentOperand);
+        let prev = parseFloat(this.previousOperand);
+        let current = parseFloat(this.currentOperand);
         if ((isNaN(prev) || isNaN(current)) && this.operation != '√') {
             return;
         }
+
         switch (this.operation) {
             case '+':
                 computation = prev + current;
@@ -72,15 +75,24 @@ class Calculator {
             case '÷':
                 computation = prev / current;
                 break;
-            case 'xⁿ':
+            case '^':
                 computation = prev ** current;
                 break;
             case '√':
-                computation = current ** 1 / 2;
+                computation = Math.sqrt(current);
                 break;
             default:
                 return;
         }
+
+        if (computation === Infinity) {
+            computation = 'divide the number by zero';
+        } else if (isNaN(computation)) {
+            computation = 'extract the square root\nfrom the negative number';
+        } else {
+            computation = +computation.toFixed(10);
+        }
+
         this.readyToReset = true;
         this.currentOperand = computation;
         this.operation = undefined;
@@ -95,7 +107,7 @@ class Calculator {
         if (isNaN(integerDigits)) {
             integerDisplay = '';
         } else {
-            integerDisplay = integerDigits.toLocaleString('en', {
+            integerDisplay = integerDigits.toLocaleString('ru', {
                 maximumFractionDigits: 0,
             });
         }
@@ -111,6 +123,17 @@ class Calculator {
             this.currentOperandTextElement.innerText = this.currentOperand;
             return;
         }
+
+        if (
+            this.currentOperand ===
+                'extract the square root\nfrom the negative number' ||
+            this.currentOperand === 'divide the number by zero'
+        ) {
+            this.currentOperandTextElement.innerText = 'ERROR';
+            this.previousOperandTextElement.innerText = `Can't ${this.currentOperand}`;
+            return;
+        }
+
         this.currentOperandTextElement.innerText = this.getDisplayNumber(
             this.currentOperand
         );
