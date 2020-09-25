@@ -26,6 +26,11 @@ class Calculator {
     }
 
     chooseOperation(operation) {
+        if (operation === '-' && !this.currentOperand.includes('-')) {
+            this.currentOperand = '-';
+            return;
+        }
+
         if (this.currentOperand === '') {
             return;
         }
@@ -42,7 +47,6 @@ class Calculator {
             return;
         }
 
-        this.readyToReset = true;
         this.operation = operation;
         this.previousOperand = this.currentOperand;
         this.currentOperand = '';
@@ -68,7 +72,7 @@ class Calculator {
             case '÷':
                 computation = prev / current;
                 break;
-            case '^':
+            case 'xⁿ':
                 computation = prev ** current;
                 break;
             case '√':
@@ -77,6 +81,7 @@ class Calculator {
             default:
                 return;
         }
+        this.readyToReset = true;
         this.currentOperand = computation;
         this.operation = undefined;
         this.previousOperand = '';
@@ -102,6 +107,10 @@ class Calculator {
     }
 
     updateDisplay() {
+        if (this.currentOperand === '-') {
+            this.currentOperandTextElement.innerText = this.currentOperand;
+            return;
+        }
         this.currentOperandTextElement.innerText = this.getDisplayNumber(
             this.currentOperand
         );
@@ -138,6 +147,7 @@ numberButtons.forEach((button) => {
             calculator.readyToReset === true
         ) {
             calculator.currentOperand = '';
+            calculator.readyToReset = false;
         }
         calculator.appendNumber(button.innerText);
         calculator.updateDisplay();
