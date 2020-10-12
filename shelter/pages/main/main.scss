@@ -1,0 +1,20 @@
+@import './scss/base/reset';
+@import './scss/abstracts/colors';
+@import './scss/abstracts/fonts';
+
+@import './scss/components/logo';
+@import './scss/components/menu';
+@import './scss/components/buttons';
+@import './scss/components/slider';
+@import './scss/components/help';
+
+@import './scss/components/wrappers';
+@import './scss/components/header';
+@import './scss/components/hero';
+@import './scss/components/about';
+@import './scss/components/pets';
+
+// .main {
+//     display: flex;
+//     flex-direction: column;
+// }

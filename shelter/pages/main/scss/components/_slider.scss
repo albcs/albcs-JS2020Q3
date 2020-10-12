@@ -1,0 +1,53 @@
+.slider {
+    display: flex;
+    align-items: center;
+
+    &__cards {
+        display: flex;
+        padding: 6rem 0.8rem;
+    }
+
+    &__card {
+        display: flex;
+        flex-direction: column;
+        border-radius: 0.9rem;
+        margin: 0 4.5rem;
+        background-color: $color-light-s;
+        cursor: pointer;
+
+        &:hover {
+            box-shadow: $card-hover;
+            background-color: $color-light-xl;
+        }
+    }
+
+    &__card-description {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 3rem;
+    }
+
+    &__card-image {
+        width: 100%;
+    }
+
+    &__card-title {
+        margin: 3rem 0;
+        text-align: center;
+        @include font-h4();
+    }
+
+    &__card-button {
+        @include button_secondary();
+    }
+
+    &__arrow-button {
+        @include slider-button();
+    }
+
+    &__arrow-button_right {
+        transform: rotate(180deg);
+        @include slider-button();
+    }
+}

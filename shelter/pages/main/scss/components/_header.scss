@@ -1,0 +1,9 @@
+.header {
+    // width: 100vw;
+    // max-width: 100%;
+
+    .wrapper {
+        @extend %wrapper;
+        padding: 6rem 4rem;
+    }
+}

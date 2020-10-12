@@ -1,0 +1,70 @@
+.hero {
+    display: flex;
+
+    &__description-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 8rem;
+        max-width: 46.8rem;
+        min-width: 38.1rem;
+    }
+
+    &__title {
+        max-width: 31rem;
+        color: $color-light-xl;
+        @include font-h2();
+    }
+
+    &__subtitle {
+        margin-top: 4.2rem;
+        color: $color-dark-s;
+        @include font-paragraph-l();
+    }
+
+    &__button {
+        margin-top: 4rem;
+        @include button_primary();
+    }
+
+    &__image-container {
+        display: flex;
+    }
+
+    &__image {
+        // width: 100%;
+        max-width: 69.8rem;
+        max-height: 72.8rem;
+        min-width: 40rem;
+    }
+
+    .wrapper {
+        @extend %wrapper;
+        padding: 0 4rem;
+    }
+}
+
+// HTML template
+//
+// <section class="hero">
+//     <div class="wrapper">
+//         <div class="hero__content">
+//             <h2 class="hero__title">
+//                 Not only people need a house
+//             </h2>
+//             <p class="hero__subtitle">
+//                 We offer to give a chance to a little and nice puppy
+//                 with an extremely wide and open heart. He or she
+//                 will love you more than anybody else in the world,
+//                 you will see!
+//             </p>
+//             <button class="hero__button" type="button">
+//                 Make a friend
+//             </button>
+//         </div>
+//         <div class="hero__image-container">
+//             <img src="./../../assets/images/start-screen-puppy.png" alt="Puppy" class="hero__image" />
+//         </div>
+//     </div>
+// </section>
