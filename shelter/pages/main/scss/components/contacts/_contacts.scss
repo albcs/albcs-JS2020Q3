@@ -1,0 +1,113 @@
+.contacts {
+    .wrapper {
+        @extend %wrapper;
+        align-items: stretch;
+        padding: 4rem 4rem 0;
+
+        @media screen and (max-width: 1279px) {
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 3rem 3rem 0;
+        }
+
+        @media screen and (max-width: 767px) {
+            height: 80.9rem;
+            padding: 3rem 1rem 0;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+
+    background: $footer-gradient-background;
+
+    &__description-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin: 1.6rem 0 6rem;
+
+        &:nth-child(1) {
+            width: 28rem;
+        }
+
+        &:nth-child(2) {
+            width: 30.2rem;
+        }
+
+        @media screen and (max-width: 1279px) {
+            margin: 0 3rem;
+            &:nth-child(1) {
+                row-gap: 4rem;
+            }
+
+            &:nth-child(2) {
+                row-gap: 3.3rem;
+            }
+        }
+
+        @media screen and (max-width: 767px) {
+            align-items: center;
+            margin: 0 0 4rem;
+
+            &:nth-child(1) {
+                height: 20.8rem;
+            }
+
+            &:nth-child(2) {
+                height: 22.2rem;
+            }
+        }
+    }
+
+    &__title {
+        color: $color-light-xl;
+        @include font-h3();
+
+        span {
+            display: block;
+        }
+
+        @media screen and (max-width: 767px) {
+            span {
+                display: inline;
+            }
+
+            max-width: 27rem;
+            text-align: center;
+            @include font-h3-mobile();
+        }
+    }
+
+    &__link {
+        display: flex;
+        align-items: center;
+
+        &_address-two {
+            align-self: flex-start;
+        }
+    }
+
+    &__link-title {
+        margin-left: 2rem;
+        color: $color-primary;
+        @include font-h4();
+    }
+
+    &__image-container {
+        display: flex;
+
+        @media screen and (max-width: 1279px) {
+            margin-top: 6.5rem;
+        }
+
+        @media screen and (max-width: 767px) {
+            max-width: 26rem;
+            margin: 0;
+        }
+    }
+
+    &__image {
+        width: 100%;
+    }
+}

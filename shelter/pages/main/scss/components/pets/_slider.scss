@@ -1,0 +1,88 @@
+.slider {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 6rem 0;
+
+    @media screen and (max-width: 767px) {
+        justify-content: center;
+        flex-wrap: wrap;
+        margin: 4.2rem 0;
+    }
+
+    &__arrow-button {
+        @include slider-button();
+
+        @media screen and (max-width: 767px) {
+            margin: 2rem 4rem 0;
+
+            &_left {
+                order: 2;
+            }
+
+            &_right {
+                order: 3;
+            }
+        }
+    }
+
+    &__cards {
+        display: flex;
+        column-gap: 9rem;
+
+        @media screen and (max-width: 1279px) {
+            column-gap: 4rem;
+        }
+    }
+
+    &__card {
+        display: flex;
+        flex-direction: column;
+        border-radius: 0.9rem;
+        background-color: $color-light-s;
+        cursor: pointer;
+        transition-duration: 0.5s;
+
+        &:focus,
+        &:hover,
+        &:active {
+            background-color: $color-light-xl;
+            box-shadow: $card-hover;
+        }
+
+        @media screen and (max-width: 1279px) {
+            &:nth-child(3) {
+                display: none;
+            }
+        }
+
+        @media screen and (max-width: 767px) {
+            &:nth-child(2) {
+                display: none;
+            }
+        }
+    }
+
+    &__card-description {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 3rem 0;
+    }
+
+    &__card-image {
+        width: 100%;
+    }
+
+    &__card-title {
+        text-align: center;
+        color: $color-dark-l;
+        @include font-h4();
+    }
+
+    &__card-button {
+        margin-top: 3rem;
+        @include button_secondary();
+    }
+}

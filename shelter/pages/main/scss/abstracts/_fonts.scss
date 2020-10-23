@@ -38,19 +38,23 @@ $font-secondary-italic: 'Arial Italic', 'Helvetica Italic', sans-serif;
 }
 
 @mixin font-h2() {
-    @include font-template($font-main, 4.4rem /* 3.22108vw */, 130%);
+    @include font-template($font-main, 4.4rem, 130%);
 }
 
 @mixin font-h3() {
     @include font-template($font-main, 3.5rem, 130%, 0.21rem);
 }
 
+@mixin font-h3-mobile() {
+    @include font-template($font-main, 2.5rem, 130%, 0.15rem);
+}
+
 @mixin font-h4() {
-    @include font-template($font-main, 2rem, 115%, 0.12rem);
+    @include font-template($font-main, 2rem, 115%, 0.114rem);
 }
 
 @mixin font-h5() {
-    @include font-template($font-main, 1.5rem, 110%, 0.09rem);
+    @include font-template($font-main, 1.5rem, 115%, 0.09rem);
 }
 
 @mixin font-paragraph-l() {
@@ -70,5 +74,5 @@ $font-secondary-italic: 'Arial Italic', 'Helvetica Italic', sans-serif;
 }
 
 @mixin font-menu-item() {
-    @include font-template($font-secondary, 1.5rem, 160%);
+    @include font-template($font-secondary, 1.5rem, 150%);
 }

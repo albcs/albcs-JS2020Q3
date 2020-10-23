@@ -1,0 +1,76 @@
+.about {
+    .wrapper {
+        @extend %wrapper;
+        justify-content: center;
+        padding: 8rem 4rem 10rem;
+
+        @media screen and (max-width: 1279px) {
+            flex-direction: column-reverse;
+            padding: 8rem 3rem 10rem;
+        }
+
+        @media screen and (max-width: 767px) {
+            padding: 4.2rem 1rem;
+        }
+    }
+
+    background-color: $color-light-xl;
+
+    &__image-container {
+        display: flex;
+        margin-right: 12rem;
+
+        @media screen and (max-width: 1279px) {
+            margin-top: 8rem;
+            margin-right: 0;
+        }
+
+        @media screen and (max-width: 767px) {
+            max-width: 26rem;
+            margin-top: 4.1rem; //pixel perfect - instead of "margin-top: 4.2rem;"
+        }
+    }
+
+    &__image {
+        width: 100%;
+    }
+
+    &__description-container {
+        display: flex;
+        flex-direction: column;
+        max-width: 43rem;
+
+        @media screen and (max-width: 767px) {
+            align-items: center;
+            max-width: 27rem;
+        }
+    }
+
+    &__title {
+        color: $color-dark-l;
+        @include font-h3();
+
+        span {
+            display: block;
+        }
+
+        @media screen and (max-width: 767px) {
+            text-align: center;
+            @include font-h3-mobile();
+        }
+    }
+
+    &__description {
+        margin-top: 2.5rem;
+        color: $color-dark-xl;
+        @include font-paragraph-l();
+
+        @media screen and (max-width: 767px) {
+            text-align: justify;
+
+            &:last-child {
+                margin-top: 2.2rem;
+            }
+        }
+    }
+}

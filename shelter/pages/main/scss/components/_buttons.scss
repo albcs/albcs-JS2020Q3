@@ -4,34 +4,34 @@
     align-items: center;
     width: 5.2rem;
     height: 5.2rem;
-    box-shadow: inset 0 0 0 0.2rem $color-primary;
-    border-radius: 100%;
-    padding: 1.9rem;
-    cursor: pointer;
-    background: none;
     border: none;
+    border-radius: 100%;
+    background: none;
+    box-shadow: inset 0 0 0 0.2rem $color-primary;
     outline: none;
+    cursor: pointer;
     transition-duration: 0.5s;
 
     &:hover {
-        box-shadow: none;
         background-color: $color-primary-light;
+        box-shadow: none;
     }
 }
 
 @mixin button() {
     padding: 1.5rem 4.5rem;
-    border-radius: 10rem;
-    cursor: pointer;
-    outline: none;
     border: none;
+    border-radius: 10rem;
+    outline: none;
+    cursor: pointer;
     transition-duration: 0.5s;
 
-    @include font-template($font-main, 1.7rem, 130%, 0.108rem);
+    @include font-template($font-main, 1.7rem, 130%, 0.105rem);
 }
 
 @mixin button_primary() {
     background-color: $color-primary;
+    color: $color-dark-3xl;
 
     &:hover {
         background-color: $color-primary-light;
@@ -41,12 +41,13 @@
 }
 
 @mixin button_secondary {
-    background-color: transparent;
+    background-color: $color-transparent;
     box-shadow: inset 0 0 0 2px $color-primary;
+    color: $color-dark-3xl;
 
     &:hover {
-        box-shadow: none;
         background-color: $color-primary-light;
+        box-shadow: none;
     }
 
     @include button();

@@ -1,0 +1,25 @@
+.header {
+    .wrapper {
+        @extend %wrapper;
+        padding: 6rem 4rem;
+
+        @media screen and (max-width: 1279px) {
+            padding: 3rem;
+        }
+
+        @media screen and (max-width: 767px) {
+            padding: 3rem 1rem;
+        }
+    }
+
+    .burger-menu-container {
+        display: none;
+
+        @media screen and (max-width: 767px) {
+            display: block;
+            margin-right: 4.3rem;
+            padding-top: 0.1rem; //pixel perfect - instead of "padding-top: 0;"
+            cursor: pointer;
+        }
+    }
+}
