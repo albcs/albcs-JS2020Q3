@@ -4,6 +4,7 @@ const date = document.querySelector('#date');
 const setHour = document.querySelector('#hour');
 const setMin = document.querySelector('#min');
 const setSec = document.querySelector('#sec');
+const setDot = document.querySelectorAll('.dot');
 
 const greeting = document.querySelector('#greeting');
 const name = document.querySelector('#name');
@@ -38,7 +39,7 @@ const month = [
 ];
 
 // Background Images
-let bgImages = [
+let bgImageVersOne = [
     [
         'url(./assets/images/morning/01.jpg)',
         'url(./assets/images/morning/02.jpg)',
@@ -50,16 +51,6 @@ let bgImages = [
         'url(./assets/images/morning/08.jpg)',
         'url(./assets/images/morning/09.jpg)',
         'url(./assets/images/morning/10.jpg)',
-        'url(./assets/images/morning/11.jpg)',
-        'url(./assets/images/morning/12.jpg)',
-        'url(./assets/images/morning/13.jpg)',
-        'url(./assets/images/morning/14.jpg)',
-        'url(./assets/images/morning/15.jpg)',
-        'url(./assets/images/morning/16.jpg)',
-        'url(./assets/images/morning/17.jpg)',
-        'url(./assets/images/morning/18.jpg)',
-        'url(./assets/images/morning/19.jpg)',
-        'url(./assets/images/morning/20.jpg)',
     ],
     [
         'url(./assets/images/day/01.jpg)',
@@ -72,16 +63,6 @@ let bgImages = [
         'url(./assets/images/day/08.jpg)',
         'url(./assets/images/day/09.jpg)',
         'url(./assets/images/day/10.jpg)',
-        'url(./assets/images/day/11.jpg)',
-        'url(./assets/images/day/12.jpg)',
-        'url(./assets/images/day/13.jpg)',
-        'url(./assets/images/day/14.jpg)',
-        'url(./assets/images/day/15.jpg)',
-        'url(./assets/images/day/16.jpg)',
-        'url(./assets/images/day/17.jpg)',
-        'url(./assets/images/day/18.jpg)',
-        'url(./assets/images/day/19.jpg)',
-        'url(./assets/images/day/20.jpg)',
     ],
     [
         'url(./assets/images/evening/01.jpg)',
@@ -94,16 +75,6 @@ let bgImages = [
         'url(./assets/images/evening/08.jpg)',
         'url(./assets/images/evening/09.jpg)',
         'url(./assets/images/evening/10.jpg)',
-        'url(./assets/images/evening/11.jpg)',
-        'url(./assets/images/evening/12.jpg)',
-        'url(./assets/images/evening/13.jpg)',
-        'url(./assets/images/evening/14.jpg)',
-        'url(./assets/images/evening/15.jpg)',
-        'url(./assets/images/evening/16.jpg)',
-        'url(./assets/images/evening/17.jpg)',
-        'url(./assets/images/evening/18.jpg)',
-        'url(./assets/images/evening/19.jpg)',
-        'url(./assets/images/evening/20.jpg)',
     ],
     [
         'url(./assets/images/night/01.jpg)',
@@ -116,6 +87,47 @@ let bgImages = [
         'url(./assets/images/night/08.jpg)',
         'url(./assets/images/night/09.jpg)',
         'url(./assets/images/night/10.jpg)',
+    ],
+];
+
+let bgImageVersTwo = [
+    [
+        'url(./assets/images/morning/11.jpg)',
+        'url(./assets/images/morning/12.jpg)',
+        'url(./assets/images/morning/13.jpg)',
+        'url(./assets/images/morning/14.jpg)',
+        'url(./assets/images/morning/15.jpg)',
+        'url(./assets/images/morning/16.jpg)',
+        'url(./assets/images/morning/17.jpg)',
+        'url(./assets/images/morning/18.jpg)',
+        'url(./assets/images/morning/19.jpg)',
+        'url(./assets/images/morning/20.jpg)',
+    ],
+    [
+        'url(./assets/images/day/11.jpg)',
+        'url(./assets/images/day/12.jpg)',
+        'url(./assets/images/day/13.jpg)',
+        'url(./assets/images/day/14.jpg)',
+        'url(./assets/images/day/15.jpg)',
+        'url(./assets/images/day/16.jpg)',
+        'url(./assets/images/day/17.jpg)',
+        'url(./assets/images/day/18.jpg)',
+        'url(./assets/images/day/19.jpg)',
+        'url(./assets/images/day/20.jpg)',
+    ],
+    [
+        'url(./assets/images/evening/11.jpg)',
+        'url(./assets/images/evening/12.jpg)',
+        'url(./assets/images/evening/13.jpg)',
+        'url(./assets/images/evening/14.jpg)',
+        'url(./assets/images/evening/15.jpg)',
+        'url(./assets/images/evening/16.jpg)',
+        'url(./assets/images/evening/17.jpg)',
+        'url(./assets/images/evening/18.jpg)',
+        'url(./assets/images/evening/19.jpg)',
+        'url(./assets/images/evening/20.jpg)',
+    ],
+    [
         'url(./assets/images/night/11.jpg)',
         'url(./assets/images/night/12.jpg)',
         'url(./assets/images/night/13.jpg)',
@@ -154,13 +166,22 @@ function showTime() {
     let sec = today.getSeconds();
 
     // Output Time
+
+    let tensSec = `${addZero(sec)}`.split('')[0];
+    let unitsSec = `${addZero(sec)}`.split('')[1];
+
     setHour.innerHTML = `${addZero(hour)}`;
     setMin.innerHTML = `${addZero(min)}`;
     setSec.innerHTML = `${addZero(sec)}`;
+    setDot[0].innerHTML = `:`;
+    setDot[1].innerHTML = `:`;
 
     if (min == 0 && sec == 0) {
         setBgGreet();
+        getWeather();
+        getQuote();
     }
+
     setTimeout(showTime, 1000);
 }
 
@@ -169,65 +190,86 @@ function addZero(n) {
     return (parseInt(n, 10) < 10 ? '0' : '') + n;
 }
 
+// Set Background Img Catalog
+let bgImage;
+function setBgCatalog() {
+    if (
+        localStorage.getItem('bgImageVers') === null ||
+        localStorage.getItem('bgImageVers') === '2'
+    ) {
+        localStorage.setItem('bgImageVers', 1);
+        bgImage = bgImageVersOne;
+    } else {
+        localStorage.setItem('bgImageVers', 2);
+        bgImage = bgImageVersTwo;
+    }
+}
+
 // Set Background and Greeting
 function setBgGreet() {
-    console.log('Hi');
-
     let today = new Date();
     let hour = today.getHours();
+    // container.classList.add('body-animation');
 
-    if (localStorage.getItem('bgImage') != null) {
-        container.style.backgroundImage = localStorage.getItem('bgImage');
-    } else if (localStorage.getItem('bgImage') === null) {
-        if (iI > 19) {
-            iI = 0;
-        }
-        if (dI > 19) {
-            iI = 0;
-        }
-        if (eI > 19) {
-            iI = 0;
-        }
-        if (iI > 19) {
-            nI = 0;
-        }
+    if (iI > 9) {
+        iI = 0;
+    }
+    if (dI > 9) {
+        dI = 0;
+    }
+    if (eI > 9) {
+        eI = 0;
+    }
+    if (nI > 9) {
+        nI = 0;
+    }
 
-        switch (true) {
-            case hour >= 6 && hour <= 11:
-                container.style.backgroundImage = bgImages[0][iI];
-                greeting.textContent = 'Good Morning';
-                iI++;
-                break;
-            case hour >= 12 && hour <= 17:
-                container.style.backgroundImage = bgImages[1][dI];
-                greeting.textContent = 'Good Afternoon';
-                di++;
-                break;
-            case hour >= 18 && hour <= 23:
-                container.style.backgroundImage = bgImages[2][eI];
-                greeting.textContent = 'Good Evening';
-                eI++;
-                break;
-            case hour >= 0 && hour <= 5:
-                container.style.backgroundImage = bgImages[3][nI];
-                greeting.textContent = 'Good Night';
-                nI++;
-                break;
-            default:
-                break;
-        }
+    switch (true) {
+        case hour >= 6 && hour <= 11:
+            container.style.backgroundImage = bgImage[0][iI];
+            localStorage.setItem('bgImageIndex', 0);
+            localStorage.setItem('bgImageSubIndex', iI);
+            greeting.textContent = 'Good Morning,';
+            iI++;
+            break;
+
+        case hour >= 12 && hour <= 17:
+            container.style.backgroundImage = bgImage[1][dI];
+            localStorage.setItem('bgImageIndex', 1);
+            localStorage.setItem('bgImageSubIndex', dI);
+            greeting.textContent = 'Good Afternoon,';
+            dI++;
+            break;
+
+        case hour >= 18 && hour <= 23:
+            container.style.backgroundImage = bgImage[2][eI];
+            localStorage.setItem('bgImageIndex', 2);
+            localStorage.setItem('bgImageSubIndex', eI);
+            greeting.textContent = 'Good Evening,';
+            eI++;
+            break;
+
+        case hour >= 0 && hour <= 5:
+            container.style.backgroundImage = bgImage[3][nI];
+            localStorage.setItem('bgImageIndex', 3);
+            localStorage.setItem('bgImageSubIndex', nI);
+            greeting.textContent = 'Good Night,';
+            nI++;
+            break;
+
+        default:
+            break;
     }
 }
 
 // Change Image on Click
-let j = 0;
-let i = 0;
-function bgImageChange() {
-    document.body.style.backgroundImage = bgImages[j][i];
-    localStorage.setItem('bgImage', bgImages[j][i]);
+let j = +localStorage.getItem('bgImageIndex');
+let i = +localStorage.getItem('bgImageSubIndex') + 1;
 
+function bgImageChange() {
+    document.body.style.backgroundImage = bgImage[j][i];
     setTimeout(function () {
-        container.style.backgroundImage = bgImages[j][i];
+        container.style.backgroundImage = bgImage[j][i];
     }, 500);
 
     btn.disabled = true;
@@ -236,10 +278,10 @@ function bgImageChange() {
     }, 1000);
 
     setTimeout(function () {
-        if (i === 19 && j === 3) {
+        if (i === 9 && j === 3) {
             j = 0;
             i = 0;
-        } else if (i === 19 && j !== 3) {
+        } else if (i === 9 && j !== 3) {
             j++;
             i = 0;
         } else {
@@ -250,7 +292,15 @@ function bgImageChange() {
 
 // Input Clear Name
 function inputClearName(e) {
+    // name.classList.toggle('out-animation');
+    // setTimeout(function () {
     name.textContent = '';
+    name.style.minWidth = '20px';
+    // }, 1200);
+
+    // setTimeout(function () {
+    //     name.classList.toggle('out-animation');
+    // }, 1000);
 }
 
 // Set Name
@@ -289,6 +339,7 @@ function getName() {
 // Input Clear Focus
 function inputClearFocus(e) {
     focus.textContent = '';
+    focus.style.minWidth = '20px';
 }
 
 // Set Focus
@@ -325,19 +376,119 @@ function getFocus() {
     }
 }
 
+// Quote
+const blockquote = document.querySelector('blockquote');
+const figcaption = document.querySelector('figcaption');
+const btnQ = document.querySelector('.btnQ');
+async function getQuote() {
+    // префикс https://cors-anywhere.herokuapp.com используем для доступа к данным с других сайтов если браузер возвращает ошибку Cross-Origin Request Blocked
+
+    const url = `https://type.fit/api/quotes`;
+    const res = await fetch(url);
+    const data = await res.json();
+    let quoteCounter = Math.round(Math.random() * 100);
+
+    blockquote.textContent = data[quoteCounter].text;
+    figcaption.textContent = data[quoteCounter].author;
+}
+
+// Weather
+const weatherIcon = document.querySelector('.weather-icon');
+const temperature = document.querySelector('.temperature');
+const weatherDescription = document.querySelector('.weather-description');
+const humidity = document.querySelector('.humidity');
+const wind = document.querySelector('.wind');
+
+const city = document.querySelector('.city');
+
+function inputClearCity(e) {
+    city.style.minWidth = '20px';
+    city.textContent = '';
+}
+async function getWeather() {
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city.textContent}&lang=en&appid=4bea8fab89951d24ef154f828ca40dfa&units=metric`;
+    const res = await fetch(url);
+    const data = await res.json();
+    if (data.cod === '404') {
+        city.textContent = 'Sorry, wrong city';
+        setTimeout(function () {
+            localStorage.removeItem('city');
+            getCity();
+        }, 2000);
+    }
+
+    weatherIcon.className = 'weather-icon owf';
+    weatherIcon.classList.add(`owf-${data.weather[0].id}`);
+    temperature.textContent = `${data.main.temp.toFixed(0)}°C`;
+    weatherDescription.textContent = data.weather[0].description;
+    humidity.textContent = `humidity ${data.main.humidity}%`;
+    wind.textContent = `wind ${data.wind.speed}m/s`;
+    console.log(temperature.textContent);
+}
+
+function setCity(e) {
+    if (e.type === 'keypress') {
+        // Make sure enter is pressed
+        if (
+            (e.which == 13 || e.keyCode == 13) &&
+            e.target.innerText.trim() === ''
+        ) {
+            city.textContent = localStorage.getItem('city');
+            city.blur();
+        } else if (e.which == 13 || e.keyCode == 13) {
+            localStorage.setItem('city', e.target.innerText);
+            city.blur();
+            getWeather();
+        }
+    } else if (e.type === 'blur') {
+        if (e.target.innerText.trim() === '') {
+            city.textContent = localStorage.getItem('city');
+        } else {
+            localStorage.setItem('city', e.target.innerText);
+            getWeather();
+        }
+    }
+}
+
+function getCity() {
+    if (localStorage.getItem('city') === null) {
+        localStorage.setItem('city', 'MOSCOW');
+        city.textContent = localStorage.getItem('city');
+    } else {
+        city.textContent = localStorage.getItem('city');
+        getWeather();
+    }
+}
+
 name.addEventListener('click', inputClearName);
+// name.addEventListener('focus', inputClearName);
+
 name.addEventListener('keypress', setName);
 name.addEventListener('blur', setName);
 
 focus.addEventListener('click', inputClearFocus);
+// focus.addEventListener('focus', inputClearFocus);
+
 focus.addEventListener('keypress', setFocus);
 focus.addEventListener('blur', setFocus);
 
 btn.addEventListener('click', bgImageChange);
 
+document.addEventListener('DOMContentLoaded', getWeather);
+city.addEventListener('click', inputClearCity);
+// city.addEventListener('focus', inputClearCity);
+
+city.addEventListener('keypress', setCity);
+city.addEventListener('blur', setCity);
+
+document.addEventListener('DOMContentLoaded', getQuote);
+btnQ.addEventListener('click', getQuote);
+
 // Run
 showDate();
 showTime();
+setBgCatalog();
 setBgGreet();
 getName();
 getFocus();
+getCity();
