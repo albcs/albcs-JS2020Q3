@@ -1,0 +1,164 @@
+.menu {
+    display: flex;
+    width: 44.3rem;
+
+    @media screen and (max-width: 767px) {
+        display: none;
+    }
+
+    &__list {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    &__item {
+        display: flex;
+        align-items: center;
+    }
+
+    &__link {
+        color: $color-dark-s;
+        border-bottom: 0.3rem solid $color-transparent;
+        transition-duration: 0.5s;
+
+        &:not(.temp_inactive):hover {
+            color: $color-light-s;
+        }
+
+        &_pets {
+            color: $color-dark-l;
+
+            &:not(.temp_inactive):hover {
+                color: $color-dark-3xl;
+            }
+        }
+
+        &_active {
+            color: $color-light-s;
+            border-bottom: 0.3rem solid $color-primary;
+
+            &:not(.temp_inactive):hover {
+                border-bottom: 0.3rem solid $color-transparent;
+            }
+
+            &_pets {
+                color: $color-dark-3xl;
+
+                &:not(.temp_inactive):hover {
+                    color: $color-dark-3xl;
+                }
+            }
+        }
+
+        @include font-menu-item();
+    }
+}
+
+.hamburger-menu {
+    display: none;
+
+    @media screen and (max-width: 767px) {
+        display: block;
+    }
+
+    margin-right: 4.3rem;
+
+    &__check {
+        opacity: 0;
+    }
+
+    &__btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    &__logo {
+        background: url(./../../assets/icons/burger.svg) no-repeat;
+        display: block;
+        width: 3rem;
+        height: 3rem;
+        z-index: 1;
+        transition-duration: 0.5s;
+
+        &_pets {
+            background: url(./../../assets/icons/burger-pets.svg) no-repeat;
+        }
+    }
+
+    &__box {
+        display: block;
+        position: absolute;
+        visibility: hidden;
+        top: 0;
+        right: -100%;
+        width: 320px;
+        height: 823px;
+        padding: 24.8rem 3.8rem;
+        text-align: center;
+        background-color: $color-dark-3xl;
+        transition-duration: 0.5s;
+        box-shadow: 1px 0px 6px rgba(0, 0, 0, 0.2);
+
+        &_pets {
+            background-color: $color-light-xl;
+        }
+    }
+
+    &__item {
+        margin-bottom: 4rem;
+    }
+
+    &__link {
+        display: block;
+        color: $color-dark-s;
+        border-bottom: 0.3rem solid $color-transparent;
+        transition-duration: 0.5s;
+
+        &:not(.temp_inactive):hover {
+            color: $color-light-s;
+        }
+
+        &_pets {
+            color: $color-dark-l;
+
+            &:not(.temp_inactive):hover {
+                color: $color-dark-3xl;
+            }
+        }
+
+        &_active {
+            color: $color-light-s;
+            border-bottom: 0.3rem solid $color-primary;
+
+            &:not(.temp_inactive):hover {
+                border-bottom: 0.3rem solid $color-transparent;
+            }
+
+            &_pets {
+                color: $color-dark-3xl;
+
+                &:not(.temp_inactive):hover {
+                    color: $color-dark-3xl;
+                }
+            }
+        }
+
+        @include paragraph-mobile-menu();
+    }
+
+    &__check:checked ~ .hamburger-menu__btn > span {
+        transform: rotate(90deg);
+    }
+
+    &__check:checked ~ .hamburger-menu__box {
+        visibility: visible;
+        right: calc(50vw - 160px);
+    }
+}
+
+.temp_inactive {
+    cursor: default;
+}

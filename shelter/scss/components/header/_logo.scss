@@ -9,12 +9,23 @@
 
     &__title {
         color: $color-primary;
+
+        &_pets {
+            color: $color-dark-l;
+        }
+
         @include font-logo-title();
     }
 
     &__subtitle {
         margin-top: 1rem;
         color: $color-light-xl;
+
+        &_pets {
+            color: $color-dark-3xl;
+        }
+
         @include font-logo-subtitle();
     }
+    z-index: 1;
 }

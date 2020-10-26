@@ -76,3 +76,7 @@ $font-secondary-italic: 'Arial Italic', 'Helvetica Italic', sans-serif;
 @mixin font-menu-item() {
     @include font-template($font-secondary, 1.5rem, 150%);
 }
+
+@mixin paragraph-mobile-menu() {
+    @include font-template($font-secondary, 3.2rem, 160%, 0);
+}

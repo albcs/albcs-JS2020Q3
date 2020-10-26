@@ -22,12 +22,48 @@
                         </a>
                     </div>
 
-                    <nav class="burger-menu-container">
-                        <img
-                            src="./../../assets/icons/burger.svg"
-                            alt="Burger menu"
-                            class="burger-menu-icon"
+                    <nav class="hamburger-menu">
+                        <input
+                            class="hamburger-menu__check"
+                            id="hamburger-menu__checkbox"
+                            type="checkbox"
                         />
+                        <label
+                            class="hamburger-menu__btn"
+                            for="hamburger-menu__checkbox"
+                        >
+                            <span class="hamburger-menu__logo"></span>
+                        </label>
+                        <ul class="hamburger-menu__box">
+                            <li class="hamburger-menu__item">
+                                <a
+                                    class="hamburger-menu__link hamburger-menu__link_active"
+                                    href="#"
+                                    >About the shelter</a
+                                >
+                            </li>
+                            <li class="hamburger-menu__item">
+                                <a
+                                    class="hamburger-menu__link"
+                                    href="./../pets/pets.html"
+                                    >Our pets</a
+                                >
+                            </li>
+                            <li class="hamburger-menu__item">
+                                <a
+                                    class="hamburger-menu__link temp_inactive"
+                                    href="#"
+                                    >Help the shelter</a
+                                >
+                            </li>
+                            <li class="hamburger-menu__item">
+                                <a
+                                    class="hamburger-menu__link temp_inactive"
+                                    href="#"
+                                    >Contacts</a
+                                >
+                            </li>
+                        </ul>
                     </nav>
 
                     <nav class="menu">
@@ -38,15 +74,19 @@
                                 >
                             </li>
                             <li class="menu__item">
-                                <a href="#" class="menu__link">Our pets</a>
+                                <a href="./../pets/pets.html" class="menu__link"
+                                    >Our pets</a
+                                >
                             </li>
                             <li class="menu__item">
-                                <a href="#" class="menu__link">
+                                <a href="#" class="menu__link temp_inactive">
                                     Help the shelter
                                 </a>
                             </li>
                             <li class="menu__item">
-                                <a href="#" class="menu__link">Contacts</a>
+                                <a href="#" class="menu__link temp_inactive"
+                                    >Contacts</a
+                                >
                             </li>
                         </ul>
                     </nav>
@@ -66,7 +106,12 @@
                             will love you more than anybody else in the world,
                             you will see!
                         </p>
-                        <button class="hero__button" type="button">
+
+                        <button
+                            onclick="document.location='./../pets/pets.html'"
+                            class="hero__button"
+                            type="button"
+                        >
                             Make a friend
                         </button>
                     </div>
@@ -196,7 +241,11 @@
                             </button>
                         </div>
 
-                        <button class="pets__button">
+                        <button
+                            onclick="document.location='./../pets/pets.html'"
+                            class="pets__button"
+                            type="button"
+                        >
                             Get to know the rest
                         </button>
                     </div>
@@ -371,81 +420,76 @@
                     </div>
                 </div>
             </section>
-
-            <section class="contacts">
-                <div class="wrapper">
-                    <div class="contacts__description-container">
-                        <h3 class="contacts__title">
-                            <span>For questions</span>
-                            <span>and suggestions</span>
-                        </h3>
-                        <a
-                            href="mailto:email@shelter.com"
-                            class="contacts__link"
-                        >
-                            <img
-                                src="./../../assets/icons/mail.svg"
-                                alt="Email"
-                                class="contacts__icon"
-                            />
-                            <h4 class="contacts__link-title">
-                                email@shelter.com
-                            </h4>
-                        </a>
-                        <a href="tel:+136745677554" class="contacts__link">
-                            <img
-                                src="./../../assets/icons/phone.svg"
-                                alt="Phone number"
-                                class="contacts__icon"
-                            />
-                            <h4 class="contacts__link-title">
-                                +13 674 567 75 54
-                            </h4>
-                        </a>
-                    </div>
-
-                    <div class="contacts__description-container">
-                        <h3 class="contacts__title">
-                            <span>We are waiting</span>
-                            <span>for your visit</span>
-                        </h3>
-                        <a
-                            href="https://goo.gl/maps/R3DybDnX9gCsihba6"
-                            class="contacts__link contacts__link_address-one"
-                        >
-                            <img
-                                src="./../../assets/icons/pin.svg"
-                                alt="Address"
-                                class="contacts__icon"
-                            />
-                            <h4 class="contacts__link-title">
-                                <span>1 Central Street, Boston</span>
-                                <span>(entrance from the store)</span>
-                            </h4>
-                        </a>
-                        <a
-                            href="https://goo.gl/maps/fQq5hVNCLfRHmhDK6"
-                            class="contacts__link contacts__link_address-two"
-                        >
-                            <img
-                                src="./../../assets/icons/pin.svg"
-                                alt="Address"
-                                class="contacts__icon"
-                            />
-                            <h4 class="contacts__link-title">
-                                18 South Park, London
-                            </h4>
-                        </a>
-                    </div>
-                    <div class="contacts__image-container">
-                        <img
-                            src="./../../assets/images/footer-puppy.png"
-                            alt="Puppy"
-                            class="contacts__image"
-                        />
-                    </div>
-                </div>
-            </section>
         </main>
+
+        <footer class="contacts">
+            <div class="wrapper">
+                <div class="contacts__description-container">
+                    <h3 class="contacts__title">
+                        <span>For questions</span>
+                        <span>and suggestions</span>
+                    </h3>
+                    <a href="mailto:email@shelter.com" class="contacts__link">
+                        <img
+                            src="./../../assets/icons/mail.svg"
+                            alt="Email"
+                            class="contacts__icon"
+                        />
+                        <h4 class="contacts__link-title">email@shelter.com</h4>
+                    </a>
+                    <a href="tel:+136745677554" class="contacts__link">
+                        <img
+                            src="./../../assets/icons/phone.svg"
+                            alt="Phone number"
+                            class="contacts__icon"
+                        />
+                        <h4 class="contacts__link-title">+13 674 567 75 54</h4>
+                    </a>
+                </div>
+
+                <div class="contacts__description-container">
+                    <h3 class="contacts__title">
+                        <span>We are waiting</span>
+                        <span>for your visit</span>
+                    </h3>
+                    <a
+                        href="https://goo.gl/maps/R3DybDnX9gCsihba6"
+                        class="contacts__link contacts__link_address-one"
+                        target="_blank"
+                    >
+                        <img
+                            src="./../../assets/icons/pin.svg"
+                            alt="Address"
+                            class="contacts__icon"
+                        />
+                        <h4 class="contacts__link-title">
+                            <span>1 Central Street, Boston</span>
+                            <span>(entrance from the store)</span>
+                        </h4>
+                    </a>
+                    <a
+                        href="https://goo.gl/maps/fQq5hVNCLfRHmhDK6"
+                        class="contacts__link contacts__link_address-two"
+                        target="_blank"
+                    >
+                        <img
+                            src="./../../assets/icons/pin.svg"
+                            alt="Address"
+                            class="contacts__icon"
+                        />
+                        <h4 class="contacts__link-title">
+                            18 South Park, London
+                        </h4>
+                    </a>
+                </div>
+                <div class="contacts__image-container">
+                    <img
+                        src="./../../assets/images/footer-puppy.png"
+                        alt="Puppy"
+                        class="contacts__image"
+                    />
+                </div>
+            </div>
+        </footer>
     </body>
 </html>

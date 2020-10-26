@@ -1,0 +1,39 @@
+.header {
+    &_pets {
+        width: 100%;
+        position: fixed;
+    }
+
+    .wrapper {
+        @extend %wrapper;
+        padding: 6rem 4rem;
+
+        @media screen and (max-width: 1279px) {
+            padding: 3rem;
+        }
+
+        @media screen and (max-width: 767px) {
+            padding: 3rem 1rem;
+        }
+
+        &_pets {
+            padding: 3rem 4rem;
+            background: $color-light-xl;
+
+            @media screen and (max-width: 1279px) {
+                padding: 3rem;
+            }
+
+            @media screen and (max-width: 767px) {
+                padding: 3rem 1rem;
+            }
+        }
+    }
+}
+
+.bcG {
+    position: fixed;
+    width: 100vw;
+    height: 12rem;
+    background: $color-light-xl;
+}

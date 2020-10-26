@@ -10,6 +10,20 @@
         @media screen and (max-width: 767px) {
             padding: 4.2rem 1rem;
         }
+
+        &_pets {
+            @media screen and (max-width: 1279px) {
+                padding: 8rem 3rem 7.6rem;
+            }
+
+            @media screen and (max-width: 767px) {
+                padding: 4.2rem 1rem;
+            }
+        }
+    }
+
+    &_pets {
+        margin-top: 12rem;
     }
 
     background-color: $color-light-l;

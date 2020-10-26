@@ -11,6 +11,20 @@
         margin: 4.2rem 0;
     }
 
+    &_pets {
+        flex-direction: column;
+        justify-content: center;
+        margin: 6rem 0 0;
+
+        @media screen and (max-width: 1279px) {
+            margin: 3rem 0 0;
+        }
+
+        @media screen and (max-width: 767px) {
+            margin: 4.2rem 0 0;
+        }
+    }
+
     &__arrow-button {
         @include slider-button();
 
@@ -25,6 +39,22 @@
                 order: 3;
             }
         }
+
+        &_pets {
+            @media screen and (max-width: 767px) {
+                margin: 0;
+            }
+        }
+    }
+
+    &__index-button {
+        background-color: $color-primary-light;
+        box-shadow: none;
+        cursor: auto;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        font-size: 2rem;
+        line-height: 115%;
+        color: $color-dark-3xl;
     }
 
     &__cards {
@@ -34,6 +64,13 @@
         @media screen and (max-width: 1279px) {
             column-gap: 4rem;
         }
+
+        &_pets {
+            justify-content: center;
+            flex-wrap: wrap;
+            column-gap: 4rem;
+            row-gap: 3rem;
+        }
     }
 
     &__card {
@@ -41,6 +78,7 @@
         flex-direction: column;
         border-radius: 0.9rem;
         background-color: $color-light-s;
+        width: 27rem;
         cursor: pointer;
         transition-duration: 0.5s;
 
@@ -49,6 +87,11 @@
         &:active {
             background-color: $color-light-xl;
             box-shadow: $card-hover;
+
+            .slider__card-button {
+                background-color: $color-primary-light;
+                box-shadow: none;
+            }
         }
 
         @media screen and (max-width: 1279px) {
@@ -60,6 +103,21 @@
         @media screen and (max-width: 767px) {
             &:nth-child(2) {
                 display: none;
+            }
+        }
+
+        &_pets {
+            @media screen and (max-width: 1279px) {
+                &:nth-child(7) {
+                    display: none;
+                }
+            }
+
+            @media screen and (max-width: 767px) {
+                &:nth-child(4),
+                &:nth-child(5) {
+                    display: none;
+                }
             }
         }
     }
@@ -84,5 +142,21 @@
     &__card-button {
         margin-top: 3rem;
         @include button_secondary();
+    }
+
+    &__arrow-buttons {
+        display: flex;
+        justify-content: center;
+        column-gap: 2rem;
+        margin-top: 6rem;
+
+        @media screen and (max-width: 1279px) {
+            margin-top: 4rem;
+        }
+
+        @media screen and (max-width: 767px) {
+            column-gap: 1rem;
+            margin-top: 4.2rem;
+        }
     }
 }
