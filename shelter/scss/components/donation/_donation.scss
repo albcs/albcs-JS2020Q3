@@ -1,0 +1,122 @@
+.donation {
+    .wrapper {
+        @extend %wrapper;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 8rem 4rem 10rem;
+
+        @media screen and (max-width: 1279px) {
+            flex-direction: column-reverse;
+            padding: 8rem 3rem 10rem 3rem;
+            align-items: center;
+        }
+
+        @media screen and (max-width: 768px) {
+            padding: 4.2rem 1rem;
+        }
+    }
+
+    background-color: $color-light-l;
+
+    &__image-container {
+        display: flex;
+        margin-top: 1.1rem;
+
+        @media screen and (max-width: 1279px) {
+            margin-top: 6rem;
+            margin-right: 0.01rem; //pixel perfect
+        }
+
+        @media screen and (max-width: 768px) {
+            margin-top: 4.3rem; // pixel perfect - instead of "margin-top:4.2"
+            max-width: 26rem;
+        }
+    }
+
+    &__image {
+        width: 100%;
+    }
+
+    &__description-container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        max-width: 38rem;
+        margin-left: 2.9rem; //pixel perfect - instead of "margin-left: 3rem;"
+
+        @media screen and (max-width: 1279px) {
+            margin-left: 0;
+        }
+
+        @media screen and (max-width: 768px) {
+            align-items: center;
+            max-width: 30rem;
+        }
+    }
+
+    &__title {
+        color: $color-dark-l;
+        @include font-h3();
+
+        span {
+            display: block;
+        }
+
+        @media screen and (max-width: 768px) {
+            text-align: center;
+
+            @include font-h3-mobile;
+        }
+    }
+
+    &__subtitle {
+        margin: 2rem 0;
+        color: $color-dark-l;
+        @include font-h5();
+
+        @media screen and (max-width: 768px) {
+            text-align: center;
+            line-height: 160%; // pixel perfect - instead of the solid mixin
+            letter-spacing: 0; // pixel perfect - instead of the solid mixin
+
+            // @include font-paragraph-l();
+        }
+    }
+
+    &__link {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 1.5rem;
+        background: #f1cdb3;
+        border-radius: 0.9rem;
+        text-decoration: none;
+        transition: 0.5s;
+
+        &:hover {
+            background: #fddcc4;
+        }
+    }
+
+    &__card-number {
+        margin-left: 1.5rem;
+        color: $color-dark-l;
+        @include font-h4();
+        letter-spacing: 0.122rem; //pixel perfect - instead of the preset mixin width
+
+        @media screen and (max-width: 768px) {
+            @include font-h5();
+        }
+    }
+
+    &__description {
+        margin-top: 2rem;
+        color: $color-dark-m;
+        @include font-paragraph-s();
+
+        @media screen and (max-width: 768px) {
+            max-width: 28rem;
+            text-align: justify;
+        }
+    }
+}

@@ -1,0 +1,82 @@
+@font-face {
+    font-family: 'Georgia';
+    src: local('☺'), url('./../../assets/fonts/georgia.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    unicode-range: U+0020-2074;
+}
+
+@font-face {
+    font-family: 'Arial';
+    src: local('☺'), url('./../../assets/fonts/arial.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    unicode-range: U+0020-02DC;
+}
+
+@font-face {
+    font-family: 'Arial Italic';
+    src: local('☺'),
+        url('./../../assets/fonts/arial_italic.ttf') format('truetype');
+    font-weight: 400;
+    font-style: italic;
+    font-stretch: normal;
+    unicode-range: U+0020-02DC;
+}
+
+$font-main: 'Georgia', 'Times New Roman', serif;
+$font-secondary: 'Arial', 'Helvetica', sans-serif;
+$font-secondary-italic: 'Arial Italic', 'Helvetica Italic', sans-serif;
+
+@mixin font-template($family, $size, $height, $spacing: normal) {
+    font-family: $family;
+    font-size: $size;
+    line-height: $height;
+    letter-spacing: $spacing;
+}
+
+@mixin font-h2() {
+    @include font-template($font-main, 4.4rem, 130%);
+}
+
+@mixin font-h3() {
+    @include font-template($font-main, 3.5rem, 130%, 0.21rem);
+}
+
+@mixin font-h3-mobile() {
+    @include font-template($font-main, 2.5rem, 130%, 0.15rem);
+}
+
+@mixin font-h4() {
+    @include font-template($font-main, 2rem, 115%, 0.114rem);
+}
+
+@mixin font-h5() {
+    @include font-template($font-main, 1.5rem, 115%, 0.09rem);
+}
+
+@mixin font-paragraph-l() {
+    @include font-template($font-secondary, 1.5rem, 160%);
+}
+
+@mixin font-paragraph-s() {
+    @include font-template($font-secondary-italic, 1.2rem, 150%);
+}
+
+@mixin font-logo-title() {
+    @include font-template($font-main, 3.2rem, 113%, 0.2rem);
+}
+
+@mixin font-logo-subtitle() {
+    @include font-template($font-secondary, 1.3rem, 110%, 0.13rem);
+}
+
+@mixin font-menu-item() {
+    @include font-template($font-secondary, 1.5rem, 150%);
+}
+
+@mixin paragraph-mobile-menu() {
+    @include font-template($font-secondary, 3.2rem, 160%, 0);
+}

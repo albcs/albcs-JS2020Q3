@@ -1,0 +1,31 @@
+.logo {
+    &__link {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        cursor: pointer;
+        transition-duration: 0.5s;
+    }
+
+    &__title {
+        color: $color-primary;
+
+        &_pets {
+            color: $color-dark-l;
+        }
+
+        @include font-logo-title();
+    }
+
+    &__subtitle {
+        margin-top: 1rem;
+        color: $color-light-xl;
+
+        &_pets {
+            color: $color-dark-3xl;
+        }
+
+        @include font-logo-subtitle();
+    }
+    z-index: 1;
+}

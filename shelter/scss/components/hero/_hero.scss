@@ -1,0 +1,79 @@
+.hero {
+    .wrapper {
+        @extend %wrapper;
+        padding: 0 4rem;
+
+        @media screen and (max-width: 1279px) {
+            flex-direction: column;
+            padding: 3rem 3rem 0;
+        }
+
+        @media screen and (max-width: 767px) {
+            padding: 3rem 1rem 0.1rem; //pixel perfect - instead of "padding: 3rem 1rem;"
+        }
+    }
+
+    &__description-container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding-bottom: 8rem;
+        max-width: 46rem;
+
+        @media screen and (max-width: 767px) {
+            align-items: center;
+            max-width: 30rem;
+        }
+    }
+
+    &__title {
+        color: $color-light-xl;
+        @include font-h2();
+
+        span {
+            display: block;
+        }
+
+        @media screen and (max-width: 767px) {
+            text-align: center;
+            @include font-h3-mobile();
+        }
+    }
+
+    &__subtitle {
+        margin: 4.2rem 0;
+        color: $color-dark-s;
+        @include font-paragraph-l();
+
+        @media screen and (max-width: 767px) {
+            text-align: center;
+        }
+    }
+
+    &__button {
+        @include button_primary();
+
+        @media screen and (max-width: 1279px) {
+            align-self: center;
+        }
+    }
+
+    &__image-container {
+        display: flex;
+
+        @media screen and (max-width: 1279px) {
+            align-self: flex-end;
+            max-width: 56.9rem;
+            margin-top: 2rem;
+        }
+
+        @media screen and (max-width: 767px) {
+            max-width: 26rem;
+            margin-top: 2.5rem;
+        }
+    }
+
+    &__image {
+        width: 100%;
+    }
+}

@@ -1,0 +1,54 @@
+@mixin slider-button() {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 5.2rem;
+    height: 5.2rem;
+    border: none;
+    border-radius: 100%;
+    background: none;
+    box-shadow: inset 0 0 0 0.2rem $color-primary;
+    outline: none;
+    cursor: pointer;
+    transition-duration: 0.5s;
+
+    &:hover {
+        background-color: $color-primary-light;
+        box-shadow: none;
+    }
+}
+
+@mixin button() {
+    padding: 1.5rem 4.5rem;
+    border: none;
+    border-radius: 10rem;
+    outline: none;
+    cursor: pointer;
+    transition-duration: 0.5s;
+
+    @include font-template($font-main, 1.7rem, 130%, 0.105rem);
+}
+
+@mixin button_primary() {
+    background-color: $color-primary;
+    color: $color-dark-3xl;
+
+    &:hover {
+        background-color: $color-primary-light;
+    }
+
+    @include button();
+}
+
+@mixin button_secondary {
+    background-color: $color-transparent;
+    box-shadow: inset 0 0 0 2px $color-primary;
+    color: $color-dark-3xl;
+
+    &:hover {
+        background-color: $color-primary-light;
+        box-shadow: none;
+    }
+
+    @include button();
+}
