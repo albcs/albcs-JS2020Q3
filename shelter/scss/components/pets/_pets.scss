@@ -52,4 +52,66 @@
     &__button {
         @include button_primary();
     }
+
+    &__popup {
+        display: flex;
+        width: 90rem;
+        border-radius: 1rem;
+        background-color: $color-light-s;
+        cursor: auto;
+
+        &-image {
+            width: 50rem;
+            height: 100%;
+            border-radius: 1rem;
+        }
+
+        &-description-container {
+            margin: 5rem 2rem 0 2.9rem;
+        }
+
+        &-title {
+            @include font-h3();
+            color: $color-popup;
+        }
+
+        &-subtitle {
+            margin-top: 1rem;
+
+            @include font-h4();
+            color: $color-popup;
+        }
+
+        &-description {
+            margin: 4rem 0;
+
+            @include font-h5();
+            color: $color-popup;
+        }
+
+        &-property-item {
+            color: $color-primary;
+            list-style: inside;
+            margin-bottom: 1.1rem;
+        }
+
+        &-property {
+            display: inline;
+
+            @include font-h5();
+            color: $color-popup;
+
+            &-name {
+                font-weight: bold;
+                letter-spacing: 0.2rem;
+            }
+        }
+
+        &-button {
+            position: relative;
+            left: 100%;
+            @include slider-button();
+            background: transparent;
+        }
+    }
 }

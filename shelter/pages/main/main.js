@@ -8,23 +8,22 @@ sliderLeftButton.addEventListener('click', slideOutToRight);
 
 let iRandom;
 let iRandomNew = [];
+let iPopupData = [];
 let iRandomUsed = [0, 1, 2];
 
-petsSliderCards.style.height = '435px';
-// petsSliderCards.style.overflow = 'hidden';
+petsSliderCards.style.height = '43.5rem';
 
 function createSliderCard() {
-    let iRandomUsedCounter = 0;
-    petsSlider.forEach((element) => {
+    petsSlider.forEach((element, index) => {
         element.innerHTML = `
             <img
-                src=${petsData[iRandomUsed[iRandomUsedCounter]].img}
-                alt=${petsData[iRandomUsed[iRandomUsedCounter]].name}
+                src=${petsData[iRandomUsed[index]].img}
+                alt=${petsData[iRandomUsed[index]].name}
                 class="slider__card-image"
             />
             <div class="slider__card-description">
                 <h4 class="slider__card-title">
-                    ${petsData[iRandomUsed[iRandomUsedCounter]].name}
+                    ${petsData[iRandomUsed[index]].name}
                 </h4>
                 <button class="slider__card-button">
                     Learn more
@@ -32,9 +31,9 @@ function createSliderCard() {
             </div>
             `;
 
-        iRandomUsedCounter++;
         iRandomCreate();
     });
+    iPopupData = iRandomUsed;
     iRandomUsed = iRandomNew;
     iRandomNew = [];
 }
@@ -137,3 +136,116 @@ function slideOutToRight() {
 }
 
 createSliderCard();
+
+// Popup
+
+let popup = document.querySelector('.popup-wrapper');
+let popupContainer = document.querySelector('.popup-container');
+let petsPopup = document.querySelector('.pets__popup');
+let popupButton = document.querySelector('.pets__popup-button');
+
+petsSlider.forEach((element, index) => {
+    element.addEventListener('click', function () {
+        popup.classList.add('fade-in');
+
+        // setTimeout(function () {
+        petsPopup.innerHTML = `
+            <div class="pets__popup-image-container">
+                <img
+                    src=${petsData[iPopupData[index]].img}
+                    alt=${petsData[iPopupData[index]].name}
+                    class="pets__popup-image"
+                />
+            </div>
+            <div class="pets__popup-description-container">
+                <h3 class="pets__popup-title">
+                    ${petsData[iPopupData[index]].name}
+                </h3>
+                <h4 class="pets__popup-subtitle">
+                    ${petsData[iPopupData[index]].type} - 
+                    ${petsData[iPopupData[index]].breed}
+                </h4>
+                <h5 class="pets__popup-description">
+                    ${petsData[iPopupData[index]].description}
+                </h5>
+                <ul class="pets__popup-properties">
+                    <li class="pets__popup-property-item">
+                        <h5 class="pets__popup-property">
+                            <span class="pets__popup-property-name">Age: </span>
+                            ${petsData[iPopupData[index]].age}
+                        </h5>
+                    </li>
+                    <li class="pets__popup-property-item">
+                        <h5 class="pets__popup-property">
+                            <span class="pets__popup-property-name">Inoculations: </span>
+                            ${petsData[iPopupData[index]].inoculations}
+                        </h5>
+                    </li>
+                    <li class="pets__popup-property-item">
+                        <h5 class="pets__popup-property">
+                            <span class="pets__popup-property-name" >Diseases: </span>
+                            ${petsData[iPopupData[index]].diseases}
+                        </h5>
+                    </li>
+                    <li class="pets__popup-property-item">
+                        <h5 class="pets__popup-property">
+                            <span class="pets__popup-property-name">Parasites: </span>
+                            ${
+                                petsData[iPopupData[index]].parasites
+                            }                            
+                        </h5>
+                    </li>
+                </ul>
+            </div>`;
+
+        popup.style.display = 'flex';
+        document.body.style.width = window.getComputedStyle(
+            document.body
+        ).width;
+        document.body.style.overflow = 'hidden';
+        // }, 500);
+    });
+});
+
+popupButton.addEventListener('click', function () {
+    popup.classList.remove('fade-in');
+    popup.classList.add('fade-out');
+    setTimeout(() => {
+        popup.style.display = 'none';
+        document.body.style.overflow = 'auto';
+        document.body.style.width = 'auto';
+        popup.classList.remove('fade-out');
+        popup.classList.add('fade-in');
+    }, 1000);
+});
+
+popup.addEventListener('click', function (e) {
+    if (
+        e.target.classList.contains('popup-container') ||
+        e.target.classList.contains('popup-wrapper')
+    ) {
+        popup.classList.remove('fade-in');
+        popup.classList.add('fade-out');
+
+        setTimeout(() => {
+            popup.style.display = 'none';
+            document.body.style.overflow = 'auto';
+            document.body.style.width = 'auto';
+            popup.classList.remove('fade-out');
+            popup.classList.add('fade-in');
+        }, 1000);
+    }
+});
+
+// Hamburger menu - scroll block
+// let checkboxMenu = document.querySelector('.hamburger-menu__check');
+// checkboxMenu.addEventListener('change', overflowActivation);
+// function overflowActivation() {
+//     document.body.style.width = window.getComputedStyle(document.body).width;
+//     if (checkboxMenu.checked) {
+//         document.body.style.overflow = 'hidden';
+//     } else if (!checkboxMenu.checked) {
+//         document.body.style.overflow = 'auto';
+//         document.body.style.width = 'auto';
+//     }
+// }
