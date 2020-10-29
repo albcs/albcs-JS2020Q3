@@ -88,10 +88,10 @@
             background-color: $color-light-xl;
             box-shadow: $card-hover;
 
-            .slider__card-button {
-                background-color: $color-primary-light;
-                box-shadow: none;
-            }
+            // .slider__card-button {
+            //     background-color: $color-primary-light;
+            //     box-shadow: none;
+            // }
         }
 
         @media screen and (max-width: 1279px) {

@@ -1,7 +1,12 @@
 .header {
+    z-index: 4;
+
     &_pets {
-        width: 100%;
+        width: 100vw;
         position: fixed;
+        top: 0;
+        left: -7px;
+        background: $color-light-xl;
     }
 
     .wrapper {
@@ -18,7 +23,6 @@
 
         &_pets {
             padding: 3rem 4rem;
-            background: $color-light-xl;
 
             @media screen and (max-width: 1279px) {
                 padding: 3rem;
@@ -29,11 +33,4 @@
             }
         }
     }
-}
-
-.bcG {
-    position: fixed;
-    width: 100vw;
-    height: 12rem;
-    background: $color-light-xl;
 }
