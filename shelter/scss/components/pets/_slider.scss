@@ -38,6 +38,12 @@
             &_right {
                 order: 3;
             }
+            &_left-last {
+                order: 1;
+            }
+            &_right-last {
+                order: 4;
+            }
         }
 
         &_pets {
@@ -55,6 +61,10 @@
         font-size: 2rem;
         line-height: 115%;
         color: $color-dark-3xl;
+
+        @media screen and (max-width: 767px) {
+            order: 2;
+        }
     }
 
     &__cards {

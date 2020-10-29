@@ -1,13 +1,15 @@
 let petsSlider = document.querySelectorAll('.slider__card');
 let petsSliderCards = document.querySelector('.slider__cards');
-// let sliderLeftButton = document.querySelector('.slider__arrow-button');
-// let sliderRightButton = document.querySelector('.slider__arrow-button_right');
 
+let test1 = [];
 let randomNumbers = [];
 let iRandom;
 
-for (let i = 0; i < 8; i++) {
-    randomNumberCheck();
+function test() {
+    for (let i = 0; i < 8; i++) {
+        randomNumberCheck();
+    }
+    randomNumbers = [];
 }
 
 function randomNumberCheck() {
@@ -16,212 +18,113 @@ function randomNumberCheck() {
         randomNumberCheck();
     } else {
         randomNumbers.push(iRandom);
+        test1.push(iRandom);
     }
 }
-console.log(randomNumbers);
-// sliderRightButton.addEventListener('click', slideOutToLeft);
-// sliderLeftButton.addEventListener('click', slideOutToRight);
 
-// let iRandom;
-// let iRandomNew = [];
-// let iPopupData = [];
-// let iRandomUsed = [0, 1, 2];
+for (let i = 0; i < 6; i++) {
+    test();
+}
 
-// petsSliderCards.style.height = '43.5rem';
-
+let paginatorIndex = 0;
+let paginatorIndexArrow = [];
 function createSliderCard() {
-    petsSlider.forEach((element, index) => {
+    petsSlider.forEach((element) => {
+        paginatorIndexArrow.push(test1[paginatorIndex]);
+
         element.innerHTML = `
+
             <img
-                src=${petsData[randomNumbers[index]].img}
-                alt=${petsData[randomNumbers[index]].name}
+                src=${petsData[test1[paginatorIndex]].img}
+                alt=${petsData[test1[paginatorIndex]].name}
                 class="slider__card-image"
             />
             <div class="slider__card-description">
                 <h4 class="slider__card-title">
-                    ${petsData[randomNumbers[index]].name}
+                    ${petsData[test1[paginatorIndex]].name}
                 </h4>
                 <button class="slider__card-button">
                     Learn more
                 </button>
             </div>
             `;
-
-        // iRandomCreate();
+        paginatorIndex++;
+        if (paginatorIndex === 48) {
+            paginatorIndex = 0;
+        }
     });
-    // iPopupData = iRandomUsed;
-    // iRandomUsed = iRandomNew;
-    // iRandomNew = [];
 }
 
 createSliderCard();
 
-// function iRandomCreate() {
-//     iRandom = Math.floor(Math.random() * 8);
-//     if (
-//         iRandomUsed[0] === iRandom ||
-//         iRandomUsed[1] === iRandom ||
-//         iRandomUsed[2] === iRandom ||
-//         iRandomNew[0] === iRandom ||
-//         iRandomNew[1] === iRandom ||
-//         iRandomNew[2] === iRandom
-//     ) {
-//         iRandomCreate();
-//     } else {
-//         iRandomNew.push(iRandom);
-//     }
-// }
-
-// function removeAnimation() {
-//     petsSlider.forEach((element) => {
-//         element.classList.remove('slide-out-right');
-//         element.classList.remove('slide-out-left');
-//         element.classList.remove('slide-in-right');
-//         element.classList.remove('slide-in-left');
-//     });
-// }
-
-// function slideOutToLeft() {
-//     removeAnimation();
-
-//     let iOut = 0;
-//     function sliderOut() {
-//         petsSlider[iOut].classList.add('slide-out-left');
-//         iOut++;
-//         if (iOut < petsSlider.length) {
-//             setTimeout(function () {
-//                 sliderOut();
-//             }, 200);
-//         } else {
-//             iOut = 0;
-//             setTimeout(function () {
-//                 // createSliderCard();
-//                 sliderIn();
-//             }, 500);
-//         }
-//     }
-
-//     function sliderIn() {
-//         petsSlider[iOut].classList.remove('slide-out-left');
-
-//         petsSlider[iOut].classList.add('slide-in-right');
-//         iOut++;
-
-//         if (iOut < petsSlider.length) {
-//             setTimeout(function () {
-//                 sliderIn();
-//             }, 200);
-//         }
-//     }
-
-//     sliderOut();
-// }
-
-// function slideOutToRight() {
-//     removeAnimation();
-
-//     let iOut = 2;
-//     function sliderOut() {
-//         petsSlider[iOut].classList.add('slide-out-right');
-//         iOut--;
-//         if (iOut > -1) {
-//             setTimeout(function () {
-//                 sliderOut();
-//             }, 200);
-//         } else {
-//             iOut = 2;
-//             setTimeout(function () {
-//                 // createSliderCard();
-//                 sliderIn();
-//             }, 500);
-//         }
-//     }
-
-//     function sliderIn() {
-//         petsSlider[iOut].classList.remove('slide-out-right');
-
-//         petsSlider[iOut].classList.add('slide-in-left');
-//         iOut--;
-
-//         if (iOut > -1) {
-//             setTimeout(function () {
-//                 sliderIn();
-//             }, 200);
-//         }
-//     }
-
-//     sliderOut();
-// }
-
-// createSliderCard();
-
 // Popup
-
 let popup = document.querySelector('.popup-wrapper');
 let popupContainer = document.querySelector('.popup-container');
 let petsPopup = document.querySelector('.pets__popup');
 let popupButton = document.querySelector('.pets__popup-button');
 
-petsSlider.forEach((element, index) => {
-    element.addEventListener('click', function () {
-        popup.classList.add('fade-in');
+let iK = 0;
+petsSliderPopup();
 
-        // setTimeout(function () {
-        petsPopup.innerHTML = `
+function petsSliderPopup() {
+    petsSlider.forEach((element, index) => {
+        element.addEventListener('click', function () {
+            popup.classList.add('fade-in');
+
+            petsPopup.innerHTML = `
             <div class="pets__popup-image-container">
                 <img
-                    src=${petsData[randomNumbers[index]].img}
-                    alt=${petsData[randomNumbers[index]].name}
+                    src=${petsData[test1[index + iK]].img}
+                    alt=${petsData[test1[index + iK]].name}
                     class="pets__popup-image"
                 />
             </div>
             <div class="pets__popup-description-container">
                 <h3 class="pets__popup-title">
-                    ${petsData[randomNumbers[index]].name}
+                    ${petsData[test1[index + iK]].name}
                 </h3>
                 <h4 class="pets__popup-subtitle">
-                    ${petsData[randomNumbers[index]].type} -
-                    ${petsData[randomNumbers[index]].breed}
+                    ${petsData[test1[index + iK]].type} -
+                    ${petsData[test1[index + iK]].breed}
                 </h4>
                 <h5 class="pets__popup-description">
-                    ${petsData[randomNumbers[index]].description}
+                    ${petsData[test1[index + iK]].description}
                 </h5>
                 <ul class="pets__popup-properties">
                     <li class="pets__popup-property-item">
                         <h5 class="pets__popup-property">
                             <span class="pets__popup-property-name">Age: </span>
-                            ${petsData[randomNumbers[index]].age}
+                            ${petsData[test1[index + iK]].age}
                         </h5>
                     </li>
                     <li class="pets__popup-property-item">
                         <h5 class="pets__popup-property">
                             <span class="pets__popup-property-name">Inoculations: </span>
-                            ${petsData[randomNumbers[index]].inoculations}
+                            ${petsData[test1[index + iK]].inoculations}
                         </h5>
                     </li>
                     <li class="pets__popup-property-item">
                         <h5 class="pets__popup-property">
                             <span class="pets__popup-property-name" >Diseases: </span>
-                            ${petsData[randomNumbers[index]].diseases}
+                            ${petsData[test1[index + iK]].diseases}
                         </h5>
                     </li>
                     <li class="pets__popup-property-item">
                         <h5 class="pets__popup-property">
                             <span class="pets__popup-property-name">Parasites: </span>
-                            ${petsData[randomNumbers[index]].parasites}
+                            ${petsData[test1[index + iK]].parasites}
                         </h5>
                     </li>
                 </ul>
             </div>`;
-
-        popup.style.display = 'flex';
-        document.body.style.width = window.getComputedStyle(
-            document.body
-        ).width;
-        document.body.style.overflow = 'hidden';
-        // }, 500);
+            popup.style.display = 'flex';
+            document.body.style.width = window.getComputedStyle(
+                document.body
+            ).width;
+            document.body.style.overflow = 'hidden';
+        });
     });
-});
+}
 
 popupButton.addEventListener('click', function () {
     popup.classList.remove('fade-in');
@@ -254,15 +157,203 @@ popup.addEventListener('click', function (e) {
 });
 
 // Hamburger menu - scroll block
-// let checkboxMenu = document.querySelector('.hamburger-menu__check');
-// checkboxMenu.addEventListener('change', overflowActivation);
-// function overflowActivation() {
-//     document.body.style.width = window.getComputedStyle(document.body).width;
-//     console.log('ok');
-//     if (checkboxMenu.checked) {
-//         document.body.style.overflow = 'hidden';
-//     } else if (!checkboxMenu.checked) {
-//         document.body.style.overflow = 'auto';
-//         document.body.style.width = 'auto';
-//     }
-// }
+let checkboxMenu = document.querySelector('.hamburger-menu__check');
+let mainReserve = document.querySelector('.main');
+let contactsReserve = document.querySelector('.contacts');
+
+let paginatorButtonRight = document.querySelector(
+    '.slider__arrow-button_right'
+);
+let paginatorButtonLeft = document.querySelector('.slider__arrow-button_left');
+
+let paginatorButtonLeftLast = document.querySelector(
+    '.slider__arrow-button_left-last'
+);
+let paginatorButtonRightLast = document.querySelector(
+    '.slider__arrow-button_right-last'
+);
+
+let paginatorNum = document.querySelector('.slider__index-button');
+
+paginatorButtonRight.addEventListener('click', slideOutRight);
+paginatorButtonLeft.addEventListener('click', slideOutLeft);
+
+paginatorButtonRightLast.addEventListener('click', slideOutRightLast);
+paginatorButtonLeftLast.addEventListener('click', slideOutLeftLast);
+
+function slideOutRight() {
+    iK += 8;
+    petsSliderPopup();
+    removeAnimation();
+
+    petsSlider.forEach((element) => {
+        element.classList.remove('flip-in-hor-top');
+        element.classList.add('flip-out-hor-top');
+
+        setTimeout(function () {
+            createSliderCard();
+
+            sliderIn();
+        }, 500);
+    });
+
+    function sliderIn() {
+        petsSlider.forEach((element) => {
+            element.classList.remove('flip-out-hor-top');
+            element.classList.add('flip-in-hor-top');
+        });
+    }
+
+    checkDisabledBtn();
+    checkPaginatorNum();
+}
+
+function slideOutLeft() {
+    iK -= 8;
+    petsSliderPopup();
+    removeAnimation();
+
+    petsSlider.forEach((element) => {
+        element.classList.remove('flip-in-hor-top');
+        element.classList.add('flip-out-hor-top');
+
+        setTimeout(function () {
+            createSliderCard();
+
+            sliderIn();
+        }, 500);
+    });
+
+    function sliderIn() {
+        petsSlider.forEach((element) => {
+            element.classList.remove('flip-out-hor-top');
+            element.classList.add('flip-in-hor-top');
+        });
+    }
+
+    checkDisabledBtn();
+    checkPaginatorNum();
+}
+
+function slideOutRightLast() {
+    iK = 40;
+    petsSliderPopup();
+    removeAnimation();
+
+    petsSlider.forEach((element) => {
+        element.classList.remove('flip-in-hor-top');
+        element.classList.add('flip-out-hor-top');
+
+        setTimeout(function () {
+            createSliderCard();
+
+            sliderIn();
+        }, 500);
+    });
+
+    function sliderIn() {
+        petsSlider.forEach((element) => {
+            element.classList.remove('flip-out-hor-top');
+            element.classList.add('flip-in-hor-top');
+        });
+    }
+
+    checkDisabledBtn();
+    checkPaginatorNum();
+}
+
+function slideOutLeftLast() {
+    iK = 0;
+    petsSliderPopup();
+    removeAnimation();
+
+    petsSlider.forEach((element) => {
+        element.classList.remove('flip-in-hor-top');
+        element.classList.add('flip-out-hor-top');
+
+        setTimeout(function () {
+            createSliderCard();
+
+            sliderIn();
+        }, 500);
+    });
+
+    function sliderIn() {
+        petsSlider.forEach((element) => {
+            element.classList.remove('flip-out-hor-top');
+            element.classList.add('flip-in-hor-top');
+        });
+    }
+
+    checkDisabledBtn();
+    checkPaginatorNum();
+}
+
+function removeAnimation() {
+    petsSlider.forEach((element) => {
+        element.classList.remove('flip-out-hor-top');
+        element.classList.remove('flip-in-hor-top');
+    });
+}
+
+function checkDisabledBtn() {
+    if (iK === 0) {
+        paginatorButtonLeft.setAttribute('disabled', 'true');
+        paginatorButtonLeft.classList.add('disabled');
+
+        paginatorButtonLeftLast.setAttribute('disabled', 'true');
+        paginatorButtonLeftLast.classList.add('disabled');
+    } else {
+        paginatorButtonLeft.removeAttribute('disabled');
+        paginatorButtonLeft.classList.remove('disabled');
+
+        paginatorButtonLeftLast.removeAttribute('disabled');
+        paginatorButtonLeftLast.classList.remove('disabled');
+    }
+
+    if (iK === 40) {
+        paginatorButtonRight.setAttribute('disabled', 'true');
+        paginatorButtonRight.classList.add('disabled');
+
+        paginatorButtonRightLast.setAttribute('disabled', 'true');
+        paginatorButtonRightLast.classList.add('disabled');
+    } else {
+        paginatorButtonRight.removeAttribute('disabled');
+        paginatorButtonRight.classList.remove('disabled');
+
+        paginatorButtonRightLast.removeAttribute('disabled');
+        paginatorButtonRightLast.classList.remove('disabled');
+    }
+}
+
+function checkPaginatorNum() {
+    let paginatorI = 7;
+
+    switch (true) {
+        case iK >= 0 && iK <= 7:
+            paginatorI = '1';
+            break;
+        case iK >= 8 && iK <= 15:
+            paginatorI = '2';
+            break;
+        case iK >= 16 && iK <= 23:
+            paginatorI = '3';
+            break;
+        case iK >= 24 && iK <= 31:
+            paginatorI = '4';
+            break;
+        case iK >= 32 && iK <= 39:
+            paginatorI = '5';
+            break;
+        case iK >= 40 && iK <= 47:
+            paginatorI = '6';
+            break;
+        default:
+            break;
+    }
+
+    paginatorNum.innerHTML = `<span>${paginatorI}</span>`;
+}
+
+checkDisabledBtn();
+checkPaginatorNum();
